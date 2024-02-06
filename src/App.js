@@ -1,23 +1,13 @@
-import { useState } from "react"
 import Counter from "./components/Counter"
+import { useSelector } from "react-redux"
 
 const App = () => {
-  const [count, setCount] = useState(0)
-
-  const plusHandler = () => {
-    setCount(prev => prev + 1)
-  }
-  const minusHandler = () => {
-    setCount(prev => prev -1)
-  }
-  const resetHandler = () => {
-    setCount(0)
-  }
+  const count = useSelector(state => state.count)
 
   return (
     <div className="container">
       <h1>Counter: {count}</h1>
-      <Counter plusHandler={plusHandler} minusHandler={minusHandler} resetHandler={resetHandler} />
+      <Counter />
     </div>
   )
 }

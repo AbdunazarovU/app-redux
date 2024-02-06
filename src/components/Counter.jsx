@@ -1,11 +1,15 @@
+import {useDispatch} from "react-redux"
 import AddCounter from "./AddCounter"
+import { minusCounter, plusCounter, resetCounter } from "../reducers/count";
 
-const Counter = ({plusHandler, resetHandler, minusHandler}) => {
+const Counter = () => {
+  const dispatch = useDispatch();
+
   return (
     <div className='btn-group'>
-      <AddCounter handler={plusHandler} styles={"success"} Children={"Plus"} />
-      <AddCounter handler={minusHandler} styles={"secondary"} Children={"Minus"} />
-      <AddCounter handler={resetHandler} styles={"danger"} Children={"Reset"} />
+      <AddCounter handler={() => dispatch(plusCounter())} styles={"success"} Children={"Plus"} />
+      <AddCounter handler={() => dispatch(minusCounter())} styles={"secondary"} Children={"Minus"} />
+      <AddCounter handler={() => dispatch(resetCounter())} styles={"danger"} Children={"Reset"} />
     </div>
   )
 }
